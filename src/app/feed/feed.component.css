@@ -1,0 +1,15 @@
+.media {
+    display: flex;
+}
+
+.time {
+    font-size: 0.8125rem;
+}
+
+.name {
+    font-weight: 600;
+}
+
+.profile {
+
+}
