@@ -4,6 +4,7 @@ import { FeedComponent } from './feed/feed.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
+  { path: '', component: FeedComponent },
   { path: 'feed', component: FeedComponent },
   { path: 'signup', component: SignUpComponent }
 ];
