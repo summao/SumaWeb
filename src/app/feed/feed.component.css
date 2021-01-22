@@ -2,14 +2,22 @@
     display: flex;
 }
 
-.time {
-    font-size: 0.8125rem;
+.media > div {
+    padding-left: 0.5rem;
+}
+
+.profile {
+    height: 4rem;
 }
 
 .name {
     font-weight: 600;
 }
 
-.profile {
+.time {
+    font-size: 0.8125rem;
+}
 
+.privacy {
+    font-size: 0.8125rem;
 }
