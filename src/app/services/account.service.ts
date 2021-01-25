@@ -12,4 +12,8 @@ export class AccountService {
   signup(body: any) {
     return this.http.post(`${environment.sumaAuthenUrl}/signup`, body);
   }
+
+  signin(body: any) {
+    return this.http.post(`${environment.sumaAuthenUrl}/signin`, body);
+  }
 }

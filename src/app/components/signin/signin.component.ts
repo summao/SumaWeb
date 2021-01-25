@@ -3,13 +3,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/services/account.service';
 
-
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SigninComponent implements OnInit {
   fg = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -20,15 +19,19 @@ export class SignUpComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
-  signup(): void {
-    this.accountService.signup(this.fg.value).subscribe(
+  signin(): void {
+    this.accountService.signin(this.fg.value).subscribe(
       result => {
         console.log(result);
+        localStorage.setItem('profile', JSON.stringify(result));
         this.router.navigate(['feed']);
       },
-      error => console.log(error)
+      error => {
+        console.log(error);
+      }
     );
   }
 
