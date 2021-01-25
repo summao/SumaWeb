@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -14,15 +15,18 @@ export class SignUpComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private accountService: AccountService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void { }
 
   signup() {
-    this.http.post(`${environment.sumaAuthenUrl}/signup`, this.fg.value).subscribe(
+    this.accountService.signup(this.fg.value).subscribe(
       result => {
         console.log(result);
-
+        this.router.navigate(['feed']);
       },
       error => console.log(error)
     );
