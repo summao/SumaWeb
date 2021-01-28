@@ -16,4 +16,19 @@ export class AccountService {
   signin(body: any) {
     return this.http.post(`${environment.sumaAuthenUrl}/signin`, body);
   }
+
+  isUserLoggedIn(): boolean {
+    const profile = localStorage.getItem('profile');
+    if (profile === null) {
+      return false;
+    }
+
+    const profileObj = JSON.parse(profile);
+    if (profileObj && profileObj.role === 1) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
 }
