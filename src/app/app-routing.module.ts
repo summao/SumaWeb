@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FeedComponent } from './components/feed/feed.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SigninComponent } from './components/signin/signin.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuardService } from './services/authen/auth-guard.service';
 
 const routes: Routes = [
   { path: 'feed', component: FeedComponent, canActivate: [AuthGuardService] },

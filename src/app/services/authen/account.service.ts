@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Profile } from '../models/profile.model';
+import { Profile } from '../../models/profile.model';
 
 @Injectable({
   providedIn: 'root'
