@@ -13,7 +13,7 @@ export class UnsignedInGuardService implements CanActivate {
     private accountService: AccountService
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.accountService.isUserLoggedIn()) {
       return true;
     }
