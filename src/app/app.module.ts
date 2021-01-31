@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,10 @@ import { SigninComponent } from './components/signin/signin.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
