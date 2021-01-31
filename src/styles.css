@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    max-width: 700px;
+}
+
+.feed-head {
+    display: flex;
+    padding: 0.5rem;
+}
+
+.feed-head > div {
+    padding-left: 0.4rem;
+}
+
+.feed-profile {
+    height: 3.75rem;
+}
+
+.feed-name {
+    font-weight: 600;
+    line-height: 1.25rem;
+}
+
+.feed-time {
+    font-size: 0.8rem;
+}
+
+.feed-privacy {
+    font-size: 0.8rem;
+}
+
+.feed-content {
+    padding: .5rem;
+}

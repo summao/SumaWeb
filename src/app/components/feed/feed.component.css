@@ -1,23 +1,4 @@
-.media {
-    display: flex;
-}
 
-.media > div {
-    padding-left: 0.5rem;
-}
 
-.profile {
-    height: 4rem;
-}
 
-.name {
-    font-weight: 600;
-}
 
-.time {
-    font-size: 0.8125rem;
-}
-
-.privacy {
-    font-size: 0.8125rem;
-}
