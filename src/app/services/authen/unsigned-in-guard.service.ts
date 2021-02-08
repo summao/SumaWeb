@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { AccountService } from './account.service';
 
 @Injectable({
@@ -14,10 +14,23 @@ export class UnsignedInGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.accountService.isUserLoggedIn()) {
+      // signed in user try to browse signup or signin will redirect to feed
+      if (state.url === '/signup' || state.url === '/signin') {
+        this.router.navigate(['feed']);
+        return false;
+      }
+
       return true;
+    } else {
+      // these paths are public
+      if (state.url === '/signup' || state.url === '/signin') {
+        return true;
+      }
+
+      // unsigned in user will redirect to signin
+      this.router.navigate(['signin']);
+      return false;
     }
 
-    this.router.navigate(['signin']);
-    return false;
   }
 }
