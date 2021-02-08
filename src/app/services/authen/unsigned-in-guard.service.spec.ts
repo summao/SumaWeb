@@ -13,7 +13,7 @@ describe('UnsignedInGuardService', () => {
     service = new UnsignedInGuardService(routerSpy, accountServiceSpy);
   });
 
-  fdescribe('canActivate', () => {
+  describe('canActivate', () => {
     it('should return false and navigate to feed when user is already signed in and url is /signin', () => {
       accountServiceSpy.isUserLoggedIn.and.returnValue(true);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/signin' });
