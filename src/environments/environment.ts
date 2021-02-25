@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  sumaAuthenUrl: 'http://localhost:5000'
+  sumaAuthenUrl: 'http://localhost:5000',
+  sumaSocialUrl: 'http://localhost:5001'
 };
 
 /*
