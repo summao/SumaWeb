@@ -10,6 +10,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { DateTimezonePipe } from './pipes/date-timezone.pipe';
+import { CreateFeedComponent } from './components/create-feed/create-feed.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DateTimezonePipe } from './pipes/date-timezone.pipe';
     FeedComponent,
     SignUpComponent,
     SigninComponent,
-    DateTimezonePipe
+    DateTimezonePipe,
+    CreateFeedComponent
   ],
   imports: [
     BrowserModule,
