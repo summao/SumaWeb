@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Feed } from 'src/app/models/feed.model';
+import { Feed } from 'src/app/models/feeds/feed.model';
 import { FeedService } from 'src/app/services/social/feed.service';
 
 @Component({

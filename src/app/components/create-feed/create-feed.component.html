@@ -1,4 +1,4 @@
-<div class="create-feed">
+<div class="create-feed" [formGroup]="creatForm">
     <div class="small-profile">
         <img src="assets/mao_profile.jpg" class="small-profile-img">
         <div>
@@ -6,6 +6,7 @@
             <div class="small-profile-privacy">public</div>
         </div>
     </div>
-    <textarea type="text" class="form-control text-input" id="createFeed" placeholder="What do you think?"></textarea>
-    <button type="button" class="btn btn-primary">Post</button>
+    <textarea type="text" class="form-control text-input" id="createFeed" placeholder="What do you think?"
+        formControlName="text"></textarea>
+    <button type="button" class="btn btn-primary" (click)="post()">Post</button>
 </div>
