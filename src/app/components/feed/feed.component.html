@@ -1,13 +1,13 @@
 <app-create-feed></app-create-feed>
 <div *ngFor="let f of feeds" class="feed">
-    <div class="feed-head">
-        <img src="assets/mao_profile.jpg" class="feed-profile">
+    <div class="feed-profile">
+        <img src="assets/mao_profile.jpg" class="feed-profile-img">
         <div>
-            <div class="feed-name">Maoindy</div>
-            <div class="feed-time">{{ f.created | dateTimezone:'y-M-d, H:m' }}</div>
-            <div class="feed-privacy">public</div>
+            <div class="feed-profile-name">Maoindy</div>
+            <div class="feed-profile-time">{{ f.created | dateTimezone:'y-M-d, H:m' }}</div>
+            <div class="feed-profile-privacy">public</div>
         </div>
     </div>
     <p class="feed-content">{{ f.text }}</p>
-    <img src="assets/tony.jpg" class="" alt="...">
+    <img src="assets/tony.jpg" class="feed-img" alt="...">
 </div>
