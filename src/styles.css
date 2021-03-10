@@ -10,21 +10,22 @@ html {
 .feed {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(245, 83, 150, 0.267);
     border-radius: .5rem;
     max-width: 564px;
     background-color: #242526;
     color:white;
+    margin-bottom: 1rem;
 }
 
 .feed > .feed-profile {
     display: flex;
-    padding: 0.5rem;
+    padding:  .8rem .8rem 0rem .8rem;
 }
 
 .feed-profile > div {
-    padding-left: 0.4rem;
-    padding-bottom: 0.5rem;
+    padding-left: .6rem;
+    padding-bottom: .5rem;
 }
 
 .feed-profile > .feed-profile-img {
@@ -46,16 +47,16 @@ html {
 }
 
 .feed-content {
-    padding-left: .5rem;
+    padding-left: .8rem;
 }
 
 .create-feed {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(245, 83, 150, 0.267);
     border-radius: .5rem;
     max-width: 564px;
-    padding: 0.5rem;
+    padding: 0.8rem;
     margin-bottom: 1rem;
     background-color: #242526;
     color:white;
