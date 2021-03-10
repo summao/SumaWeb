@@ -80,6 +80,10 @@ html {
     font-size: 0.8rem;
 }
 
+.small-profile-privacy-select {
+    margin-top: .35rem;
+}
+
 .text-input {
     margin-bottom: .5rem;
 }

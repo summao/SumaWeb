@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FeedService } from 'src/app/services/social/feed.service';
 
 @Component({
@@ -9,9 +9,11 @@ import { FeedService } from 'src/app/services/social/feed.service';
 })
 export class CreateFeedComponent implements OnInit {
   creatForm = new FormGroup({
-    privacy: new FormControl(''),
-    text: new FormControl('')
+    privacyLevel: new FormControl('friend'),
+    text: new FormControl('', Validators.required)
   });
+
+  posting = false;
 
   constructor(
     private feedService: FeedService
@@ -21,7 +23,13 @@ export class CreateFeedComponent implements OnInit {
   }
 
   post(): void {
-    this.feedService.post(this.creatForm.value).subscribe();
+    this.posting = true;
+    this.feedService.post(this.creatForm.value).subscribe(data => {
+      this.creatForm.get('text')?.setValue('');
+    })
+      .add(() => {
+        this.posting = false;
+      });
   }
 
 }

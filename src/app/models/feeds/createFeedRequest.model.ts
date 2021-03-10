@@ -1,4 +1,4 @@
 export class createFeedRequest {
     text!: string;
-    privacy!: string;
+    privacyLevel!: string;
 }
