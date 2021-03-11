@@ -15,11 +15,12 @@
         <div class="col-sm text-center">Comment</div>
         <div class="col-sm text-center">Share</div>
     </div>
-    <div class="small-profile top-border mt-1 pt-3 px-2">
+    <app-comment [feedId]="f.id" (commentEvent)="addComment($event)"></app-comment>
+    <div *ngFor="let c of comments" class="small-profile top-border mt-1 pt-3 px-2" comments>
         <img src="assets/mao_profile.jpg" class="small-profile-img">
         <div style="width: 100%;">
             <div class="small-profile-name">Maoindy</div>
-            <input type="text" class="form-control mt-1">
+            <p>{{ c.text }}</p>
         </div>
     </div>
 </div>

@@ -1,0 +1,7 @@
+<div class="small-profile top-border mt-1 pt-3 px-2" [formGroup]="commentForm">
+    <img src="assets/mao_profile.jpg" class="small-profile-img">
+    <div style="width: 100%;">
+        <div class="small-profile-name">Maoindy</div>
+        <input type="text" class="form-control mt-1" (keyup.enter)=(comment()) formControlName="text">
+    </div>
+</div>

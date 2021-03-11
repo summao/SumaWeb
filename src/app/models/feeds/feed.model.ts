@@ -1,5 +1,5 @@
 export class Feed {
-    id!: number;
+    id!: string;
     text!: string;
     created!: Date;
     privacyLevel!: string;

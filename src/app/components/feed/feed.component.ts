@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CreateCommentResponse } from 'src/app/models/comments/CreateCommentResponse.model';
 import { Feed } from 'src/app/models/feeds/feed.model';
 import { FeedService } from 'src/app/services/social/feed.service';
 
@@ -9,6 +10,7 @@ import { FeedService } from 'src/app/services/social/feed.service';
 })
 export class FeedComponent implements OnInit {
   feeds: Feed[] = [];
+  comments: CreateCommentResponse[] = [];
 
   constructor(
     private feedService: FeedService
@@ -20,6 +22,10 @@ export class FeedComponent implements OnInit {
         this.feeds = result;
       }
     );
+  }
+
+  addComment(comment: CreateCommentResponse) {
+    this.comments.unshift(comment);
   }
 
 }
