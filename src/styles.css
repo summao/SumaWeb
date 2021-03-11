@@ -88,3 +88,9 @@ html {
     margin-bottom: .8rem;
 }
 
+.action-panel {
+    border-top:solid 1px rgba(108, 122, 122, 0.863);
+    border-bottom:solid 1px rgba(108, 122, 122, 0.863);
+    line-height: 2.5rem;
+}
+
