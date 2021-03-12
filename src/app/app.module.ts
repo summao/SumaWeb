@@ -13,6 +13,7 @@ import { DateTimezonePipe } from './pipes/date-timezone.pipe';
 import { CreateFeedComponent } from './components/create-feed/create-feed.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { FeedListComponent } from './components/feed-list/feed-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
     DateTimezonePipe,
     CreateFeedComponent,
     CreateCommentComponent,
-    CommentListComponent
+    CommentListComponent,
+    FeedListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
-<app-create-feed></app-create-feed>
-<div *ngFor="let f of feeds" class="feed">
+<div class="feed">
     <div class="feed-profile">
         <img src="assets/mao_profile.jpg" class="feed-profile-img">
         <div>
             <div class="feed-profile-name">Maoindy</div>
-            <div class="feed-profile-time">{{ f.created | dateTimezone:'y-M-d, H:m' }}</div>
-            <div class="feed-profile-privacy">{{ f.privacyLevel }}</div>
+            <div class="feed-profile-time">{{ feed.created | dateTimezone:'y-M-d, H:m' }}</div>
+            <div class="feed-profile-privacy">{{ feed.privacyLevel }}</div>
         </div>
     </div>
-    <p class="feed-content">{{ f.text }}</p>
+    <p class="feed-content">{{ feed.text }}</p>
     <img src="assets/tony.jpg" class="feed-img" alt="...">
     <div class="row gx-0 action-panel mt-4 mx-2">
         <div class="col-sm text-center pointer">Like</div>
-        <div class="col-sm text-center pointer" (click)="getComments(f.id)">Comment</div>
+        <div class="col-sm text-center pointer" (click)="onClickComment(feed.id)">Comment</div>
         <div class="col-sm text-center pointer">Share</div>
     </div>
-    <app-create-comment [feedId]="f.id" (commentEvent)="addComment($event)"></app-create-comment>
+    <app-create-comment [feedId]="feed.id" (commentEvent)="addComment($event)" *ngIf="isShowAddComment">
+    </app-create-comment>
     <app-comment-list [comments]="comments"></app-comment-list>
 </div>
