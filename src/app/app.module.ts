@@ -11,7 +11,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { DateTimezonePipe } from './pipes/date-timezone.pipe';
 import { CreateFeedComponent } from './components/create-feed/create-feed.component';
-import { CommentComponent } from './components/comment/comment.component';
+import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { CommentComponent } from './components/comment/comment.component';
     SigninComponent,
     DateTimezonePipe,
     CreateFeedComponent,
-    CommentComponent
+    CreateCommentComponent
   ],
   imports: [
     BrowserModule,

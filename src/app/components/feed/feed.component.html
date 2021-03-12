@@ -15,7 +15,7 @@
         <div class="col-sm text-center">Comment</div>
         <div class="col-sm text-center">Share</div>
     </div>
-    <app-comment [feedId]="f.id" (commentEvent)="addComment($event)"></app-comment>
+    <app-create-comment [feedId]="f.id" (commentEvent)="addComment($event)"></app-create-comment>
     <div *ngFor="let c of comments" class="small-profile top-border mt-1 pt-3 px-2" comments>
         <img src="assets/mao_profile.jpg" class="small-profile-img">
         <div style="width: 100%;">

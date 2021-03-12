@@ -4,11 +4,11 @@ import { CreateCommentResponse } from 'src/app/models/comments/CreateCommentResp
 import { CommentService } from 'src/app/services/social/comment.service';
 
 @Component({
-  selector: 'app-comment',
-  templateUrl: './comment.component.html',
-  styleUrls: ['./comment.component.css']
+  selector: 'app-create-comment',
+  templateUrl: './create-comment.component.html',
+  styleUrls: ['./create-comment.component.css']
 })
-export class CommentComponent implements OnInit {
+export class CreateCommentComponent implements OnInit {
   commentForm = new FormGroup({
     text: new FormControl('', Validators.required)
   });
