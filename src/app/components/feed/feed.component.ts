@@ -39,6 +39,18 @@ export class FeedComponent implements OnInit {
     this.isShowAddComment = true;
   }
 
+  addPrivacyLevelClass(level: string): string {
+    if (level === 'friend') {
+      return 'bi-people';
+    }
+
+    if (level === 'public') {
+      return 'bi-globe';
+    }
+
+    return '';
+  }
+
   // events
   onClickComment(feedId: string) {
     if (this.comments.length <= 0) {

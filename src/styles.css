@@ -1,29 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-    background-color: #1c1e21;
+    background-color: rgb(80 80 80);
 }
 
 .dark {
-    background-color: #1c1e21;
+    background-color: rgb(80 80 80);
 }
 
 .feed {
     display: flex;
     flex-direction: column;
-    border-radius: .5rem;
+    border-radius: .4rem;
     max-width: 564px;
-    background-color:rgba(92, 72, 80, 0.267);
-    color:white;
+    background-color:rgb(66 66 66);
+    color:rgb(238, 238, 238);
     margin-bottom: 1rem;
 }
 
 .feed > .feed-profile {
     display: flex;
-    padding:  .8rem .8rem 0rem .8rem;
+    padding: 1rem 1rem .25rem 1rem;
 }
 
 .feed-profile > div {
-    padding-left: .6rem;
+    padding-left: 1rem;
     padding-bottom: .5rem;
 }
 
@@ -47,18 +47,18 @@ html {
 }
 
 .feed-content {
-    padding-left: .8rem;
+    padding-left: 1rem;
 }
 
 .create-feed {
     display: flex;
     flex-direction: column;
-    border-radius: .5rem;
+    border-radius: .4rem;
     max-width: 564px;
-    padding: 0.8rem;
+    padding: 1rem;
     margin-bottom: 1rem;
-    background-color:rgba(92, 72, 80, 0.267);
-    color:white;
+    background-color:rgb(66 66 66);
+    color:rgb(238, 238, 238);
 }
 
 .small-profile {
@@ -92,6 +92,7 @@ html {
     border-top:solid 1px rgba(108, 122, 122, 0.863);
     border-bottom:solid 1px rgba(108, 122, 122, 0.863);
     line-height: 2.5rem;
+    margin-bottom: .8rem;
 }
 
 .pointer {
