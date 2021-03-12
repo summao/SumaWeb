@@ -1,5 +1,5 @@
 export class CreateCommentResponse {
-    CommentId!: string;
+    commentId!: string;
     text!: string;
     created!: Date;
     replyToFeedId!: string;

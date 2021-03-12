@@ -11,16 +11,10 @@
     <p class="feed-content">{{ f.text }}</p>
     <img src="assets/tony.jpg" class="feed-img" alt="...">
     <div class="row gx-0 action-panel mt-4 mx-2">
-        <div class="col-sm text-center">Like</div>
-        <div class="col-sm text-center">Comment</div>
-        <div class="col-sm text-center">Share</div>
+        <div class="col-sm text-center pointer">Like</div>
+        <div class="col-sm text-center pointer" (click)="getComments(f.id)">Comment</div>
+        <div class="col-sm text-center pointer">Share</div>
     </div>
     <app-create-comment [feedId]="f.id" (commentEvent)="addComment($event)"></app-create-comment>
-    <div *ngFor="let c of comments" class="small-profile top-border mt-1 pt-3 px-2" comments>
-        <img src="assets/mao_profile.jpg" class="small-profile-img">
-        <div style="width: 100%;">
-            <div class="small-profile-name">Maoindy</div>
-            <p>{{ c.text }}</p>
-        </div>
-    </div>
+    <app-comment-list [comments]="comments"></app-comment-list>
 </div>
