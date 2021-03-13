@@ -63,12 +63,12 @@ html {
 
 .small-profile {
      display: flex;
-     margin-bottom: .8rem;
+     margin-bottom: 1rem;
 }
 
 .small-profile-img {
     height: 3.75rem;
-    margin-right: .8rem;
+    margin-right: 1rem;
 }
 
 .small-profile-name {

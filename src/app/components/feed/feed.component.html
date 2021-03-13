@@ -10,9 +10,9 @@
     <p class="feed-content">{{ feed.text }}</p>
     <img src="assets/tony.jpg" class="feed-img" alt="...">
     <div class="row gx-0 action-panel mt-4 mx-2">
-        <div class="col-sm text-center pointer">Like</div>
-        <div class="col-sm text-center pointer" (click)="onClickComment(feed.id)">Comment</div>
-        <div class="col-sm text-center pointer">Share</div>
+        <div class="col text-center pointer">Like</div>
+        <div class="col text-center pointer" (click)="onClickComment(feed.id)">Comment</div>
+        <div class="col text-center pointer">Share</div>
     </div>
     <app-create-comment [feedId]="feed.id" (commentEvent)="addComment($event)" *ngIf="isShowAddComment">
     </app-create-comment>
