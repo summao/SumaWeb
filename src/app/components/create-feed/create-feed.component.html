@@ -10,7 +10,7 @@
             </select>
         </div>
     </div>
-    <textarea class="form-control text-input" id="createFeed" placeholder="What do you think?"
+    <textarea class="form-control text-input" id="createFeed" placeholder="want to share something?"
         formControlName="text"></textarea>
     <button type="button" class="btn btn-primary" [disabled]="creatForm.invalid" (click)="post()">
         <span *ngIf="!posting">Post</span>

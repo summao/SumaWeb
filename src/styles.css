@@ -90,6 +90,9 @@ html {
 
 .text-input {
     margin-bottom: .8rem;
+    background-color: rgb(57,57,57) !important;
+    border-width: 0 !important;
+    resize: none;
 }
 
 .action-panel {
@@ -114,7 +117,6 @@ html {
     color:rgb(238, 238, 238) !important;
     background-color:rgb(80 80 80) !important;
     border-bottom-color: rgb(222, 226, 230) !important;
-    /* border-radius: 0 !important; */
     border-right-width: 0 !important;
     border-left-width: 0 !important;
 }
@@ -125,24 +127,35 @@ html {
     line-height: 3.5rem;
     color: rgb(238, 238, 238);
     display: flex;
+    justify-content: center;
 }
 
 .tabs-header {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    padding-left: 2.5rem;
-    line-height: 3.25rem;
+    line-height: 3.39rem;
     color: rgb(27 141 205);
 }
 
+.tabs-header {
+  display: none;
+}
+
+@media (min-width: 576px) { 
+    .tabs-header {
+    display: block;
+  }
+}
+
 .tabs-content {
-    margin-left: .5rem;
+    margin-left: 0rem;
     display: flex;
     font-weight: 500;
 }
 
 .tabs-content > div {
-    margin: 0 0 0 3rem;
+    margin: 0 0 0 2rem;
+    cursor: pointer;
 }
 
 .tabs-active {

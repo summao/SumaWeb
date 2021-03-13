@@ -1,2 +1,8 @@
-<app-create-feed></app-create-feed>
-<app-feed *ngFor="let f of feeds" [feed]="f"></app-feed>
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <app-create-feed></app-create-feed>
+        <app-feed *ngFor="let f of feeds" [feed]="f"></app-feed>
+    </div>
+    <div class="col"></div>
+</div>
