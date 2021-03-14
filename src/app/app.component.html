@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg mb-3 my-navbar">
+<nav class="navbar navbar-expand-lg mb-3 navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">SumaTown</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -11,11 +11,13 @@
           <a class="nav-link" aria-current="page" [routerLink]="['post']">Posts</a>
         </li>
       </ul>
-      <span class="nav-link pointer">
+      <span class="d-flex pointer">
         Sign out
       </span>
     </div>
   </div>
 </nav>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
