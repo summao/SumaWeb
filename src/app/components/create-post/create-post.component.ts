@@ -34,6 +34,7 @@ export class CreatePostComponent implements OnInit {
 
     this.postService.post(formData).subscribe(data => {
       this.creatForm.get('text')?.setValue('');
+      this.clearPreviewImage();
     })
       .add(() => {
         this.posting = false;
@@ -60,6 +61,10 @@ export class CreatePostComponent implements OnInit {
   }
 
   onCloseImageClick() {
+    this.clearPreviewImage();
+  }
+
+  clearPreviewImage() {
     this.uploadImageUrl = null;
     this.files = null;
   }
