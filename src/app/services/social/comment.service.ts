@@ -14,8 +14,8 @@ export class CommentService {
     private http: HttpClient
   ) { }
 
-  getMany(feedId: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${environment.sumaSocialUrl}/comments/feed/${feedId}`);
+  getMany(postId: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${environment.sumaSocialUrl}/comments/post/${postId}`);
   }
 
   comment(model: any): Observable<CreateCommentResponse> {

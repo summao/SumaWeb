@@ -2,6 +2,6 @@ export class CreateCommentResponse {
     commentId!: string;
     text!: string;
     created!: Date;
-    replyToFeedId!: string;
+    replyToPostId!: string;
     commentorId!: number;
 }

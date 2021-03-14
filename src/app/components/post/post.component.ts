@@ -2,17 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CreateCommentResponse } from 'src/app/models/comments/create-comment-response.model';
 import { Comment } from 'src/app/models/comments/comment.model';
 import { CommentService } from 'src/app/services/social/comment.service';
-import { Feed } from 'src/app/models/feeds/feed.model';
+import { Post } from 'src/app/models/posts/post.model';
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css']
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.css']
 })
-export class FeedComponent implements OnInit {
+export class PostComponent implements OnInit {
   comments: Comment[] = [];
   isShowAddComment = false;
-  @Input() feed!: Feed;
+  @Input() post!: Post;
 
   constructor(
     private commentService: CommentService
@@ -29,8 +29,8 @@ export class FeedComponent implements OnInit {
     });
   }
 
-  getComments(feedId: string): void {
-    this.commentService.getMany(feedId).subscribe(comments => {
+  getComments(postId: string): void {
+    this.commentService.getMany(postId).subscribe(comments => {
       this.comments = comments;
     });
   }
@@ -52,9 +52,9 @@ export class FeedComponent implements OnInit {
   }
 
   // events
-  onClickComment(feedId: string) {
+  onClickComment(postId: string) {
     if (this.comments.length <= 0) {
-      this.getComments(feedId);
+      this.getComments(postId);
       this.showAddCommentPanel();
     }
   }

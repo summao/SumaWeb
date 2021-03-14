@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FeedService } from 'src/app/services/social/feed.service';
+import { PostService } from 'src/app/services/social/post.service';
 
 @Component({
-  selector: 'app-create-feed',
-  templateUrl: './create-feed.component.html',
-  styleUrls: ['./create-feed.component.css']
+  selector: 'app-create-post',
+  templateUrl: './create-post.component.html',
+  styleUrls: ['./create-post.component.css']
 })
-export class CreateFeedComponent implements OnInit {
+export class CreatePostComponent implements OnInit {
   creatForm = new FormGroup({
     privacyLevel: new FormControl('friend'),
     text: new FormControl('', Validators.required)
@@ -16,7 +16,7 @@ export class CreateFeedComponent implements OnInit {
   posting = false;
 
   constructor(
-    private feedService: FeedService
+    private postService: PostService
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class CreateFeedComponent implements OnInit {
 
   post(): void {
     this.posting = true;
-    this.feedService.post(this.creatForm.value).subscribe(data => {
+    this.postService.post(this.creatForm.value).subscribe(data => {
       this.creatForm.get('text')?.setValue('');
     })
       .add(() => {

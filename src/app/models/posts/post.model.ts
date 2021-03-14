@@ -1,4 +1,4 @@
-export class Feed {
+export class Post {
     id!: string;
     text!: string;
     created!: Date;

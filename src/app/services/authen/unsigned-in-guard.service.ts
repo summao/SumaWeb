@@ -14,9 +14,9 @@ export class UnsignedInGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.accountService.isUserLoggedIn()) {
-      // signed in user try to browse signup or signin will redirect to feed
+      // signed in user try to browse signup or signin will redirect to post
       if (state.url === '/signup' || state.url === '/signin') {
-        this.router.navigate(['feed']);
+        this.router.navigate(['post']);
         return false;
       }
 

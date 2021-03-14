@@ -1,4 +1,4 @@
-<div class="create-feed" [formGroup]="creatForm">
+<div class="create-post" [formGroup]="creatForm">
     <div class="small-profile">
         <img src="assets/mao_profile.jpg" class="small-profile-img">
         <div>
@@ -10,7 +10,7 @@
             </select>
         </div>
     </div>
-    <textarea class="form-control text-input" id="createFeed" placeholder="want to share something?"
+    <textarea class="form-control text-input" id="createPost" placeholder="want to share something?"
         formControlName="text"></textarea>
     <button type="button" class="btn btn-primary" [disabled]="creatForm.invalid" (click)="post()">
         <span *ngIf="!posting">Post</span>

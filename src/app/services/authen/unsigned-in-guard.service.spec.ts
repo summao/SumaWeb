@@ -14,25 +14,25 @@ describe('UnsignedInGuardService', () => {
   });
 
   describe('canActivate', () => {
-    it('should return false and navigate to feed when user is already signed in and url is /signin', () => {
+    it('should return false and navigate to post when user is already signed in and url is /signin', () => {
       accountServiceSpy.isUserLoggedIn.and.returnValue(true);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/signin' });
 
       expect(result).toBeFalsy();
-      expect(routerSpy.navigate).toHaveBeenCalledWith(['feed']);
+      expect(routerSpy.navigate).toHaveBeenCalledWith(['post']);
     });
 
-    it('should return false and navigate to feed when user is already signed in and url is /signup', () => {
+    it('should return false and navigate to post when user is already signed in and url is /signup', () => {
       accountServiceSpy.isUserLoggedIn.and.returnValue(true);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/signup' });
 
       expect(result).toBeFalsy();
-      expect(routerSpy.navigate).toHaveBeenCalledWith(['feed']);
+      expect(routerSpy.navigate).toHaveBeenCalledWith(['post']);
     });
 
     it('should return true and not navigate to any path when user is already signed in and url is not /signin or /signup', () => {
       accountServiceSpy.isUserLoggedIn.and.returnValue(true);
-      const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/feed' });
+      const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/post' });
 
       expect(result).toBeTruthy();
       expect(routerSpy.navigate).not.toHaveBeenCalled();
@@ -56,7 +56,7 @@ describe('UnsignedInGuardService', () => {
 
     it('should return false and not navigate to signin when user is not signed in and url is not /signin or /signup', () => {
       accountServiceSpy.isUserLoggedIn.and.returnValue(false);
-      const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/feed' });
+      const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/post' });
 
       expect(result).toBeFalsy();
       expect(routerSpy.navigate).toHaveBeenCalledWith(['signin']);

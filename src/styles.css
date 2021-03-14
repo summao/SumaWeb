@@ -7,7 +7,7 @@ html {
     background-color: rgb(80 80 80);
 }
 
-.feed {
+.post {
     display: flex;
     flex-direction: column;
     border-radius: .4rem;
@@ -17,40 +17,40 @@ html {
     margin-bottom: 1rem;
 }
 
-.feed > .feed-profile {
+.post > .post-profile {
     display: flex;
     padding: 1rem 1rem .25rem 1rem;
 }
 
-.feed-profile > div {
+.post-profile > div {
     padding-left: 1rem;
     padding-bottom: .5rem;
 }
 
-.feed-profile > .feed-profile-img {
+.post-profile > .post-profile-img {
     height: 3.75rem;
     margin-right: .2rem;
 }
 
-.feed-profile > div > .feed-profile-name {
+.post-profile > div > .post-profile-name {
     font-weight: 600;
     line-height: 1.25rem;
 }
 
-.feed-profile > div > .feed-profile-time {
+.post-profile > div > .post-profile-time {
     font-size: 0.8rem;
     color: #b0b3b8;
 }
 
-.feed-profile > div > .feed-profile-privacy {
+.post-profile > div > .post-profile-privacy {
     font-size: 0.8rem;
 }
 
-.feed-content {
+.post-content {
     padding-left: 1rem;
 }
 
-.create-feed {
+.create-post {
     display: flex;
     flex-direction: column;
     border-radius: .4rem;
@@ -93,6 +93,7 @@ html {
     background-color: rgb(57,57,57) !important;
     border-width: 0 !important;
     resize: none;
+    color:white !important;
 }
 
 .action-panel {

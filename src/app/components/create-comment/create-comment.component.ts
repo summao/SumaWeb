@@ -14,7 +14,7 @@ export class CreateCommentComponent implements OnInit {
   });
 
   @Output() commentEvent = new EventEmitter<CreateCommentResponse>();
-  @Input() feedId!: string;
+  @Input() postId!: string;
 
   constructor(
     private commentService: CommentService
@@ -29,7 +29,7 @@ export class CreateCommentComponent implements OnInit {
 
   comment() {
     let body = this.commentForm.value;
-    body.replyToFeedId = this.feedId;
+    body.replyToPostId = this.postId;
 
     this.commentService.comment(body).subscribe(data => {
       this.commentEvent.emit(data);

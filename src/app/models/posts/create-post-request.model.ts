@@ -1,4 +1,4 @@
-export class CreateFeedRequest {
+export class CreatePostRequest {
     text!: string;
     privacyLevel!: string;
 }

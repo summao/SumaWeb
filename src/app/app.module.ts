@@ -5,27 +5,27 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FeedComponent } from './components/feed/feed.component';
+import { PostComponent } from './components/post/post.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { DateTimezonePipe } from './pipes/date-timezone.pipe';
-import { CreateFeedComponent } from './components/create-feed/create-feed.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
-import { FeedListComponent } from './components/feed-list/feed-list.component';
+import { PostListComponent } from './components/post-list/post-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FeedComponent,
+    PostComponent,
     SignUpComponent,
     SigninComponent,
     DateTimezonePipe,
-    CreateFeedComponent,
+    CreatePostComponent,
     CreateCommentComponent,
     CommentListComponent,
-    FeedListComponent
+    PostListComponent
   ],
   imports: [
     BrowserModule,
