@@ -54,11 +54,17 @@ html {
     display: flex;
     flex-direction: column;
     border-radius: .4rem;
-    max-width: 564px;
     padding: 1rem;
     margin-bottom: 1rem;
     background-color:rgb(66 66 66);
     color:rgb(238, 238, 238);
+}
+
+/* lg */
+@media (min-width: 768px) { 
+    .post-list {
+       width: 564px;
+  }
 }
 
 .small-profile {
