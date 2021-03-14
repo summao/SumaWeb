@@ -133,29 +133,29 @@ html {
 .tabs-header {
     font-size: 1.2rem;
     font-weight: 500;
-    line-height: 3.39rem;
+    line-height: 3.38rem;
     color: rgb(27 141 205);
 }
 
-.tabs-header {
-  display: none;
-}
-
-@media (min-width: 576px) { 
-    .tabs-header {
-    display: block;
-  }
-}
-
 .tabs-content {
+    font-size: 1rem;
     margin-left: 0rem;
     display: flex;
     font-weight: 500;
 }
 
 .tabs-content > div {
-    margin: 0 0 0 2rem;
     cursor: pointer;
+}
+
+.tabs-content > div {
+    margin: 0 0 0 .5rem;
+}
+
+@media (min-width: 576px) { 
+    .tabs-content > div {
+        margin: 0 0 0 2rem;
+  }
 }
 
 .tabs-active {
