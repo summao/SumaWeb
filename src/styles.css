@@ -28,7 +28,7 @@ html {
 }
 
 .post-profile > .post-profile-img {
-    height: 3.75rem;
+    height: 3.7rem;
     margin-right: .2rem;
 }
 
@@ -69,7 +69,7 @@ html {
 
 .small-profile {
      display: flex;
-     margin-bottom: 1rem;
+     margin-bottom: .6rem;
 }
 
 .small-profile > div {
@@ -78,7 +78,7 @@ html {
 }
 
 .small-profile-img {
-    height: 3.75rem;
+    height: 3.7rem;
 }
 
 .small-profile-name {
@@ -91,7 +91,10 @@ html {
 }
 
 .small-profile-privacy-select {
-    margin-top: .35rem;
+    margin-top: .6rem;
+    background-color: rgb(108 117 125) !important;
+    border-width: 0 !important;
+    color: rgb(238, 238, 238) !important;
 }
 
 .text-input {
