@@ -14,6 +14,8 @@ export class CreatePostComponent implements OnInit {
   });
 
   posting = false;
+  uploadImageUrl!: string | ArrayBuffer | null;
+  files!: any;
 
   constructor(
     private postService: PostService
@@ -24,12 +26,37 @@ export class CreatePostComponent implements OnInit {
 
   post(): void {
     this.posting = true;
-    this.postService.post(this.creatForm.value).subscribe(data => {
+    const formData = new FormData();
+    formData.append('Image', this.files[0])
+    const value = this.creatForm.value;
+    formData.append('PrivacyLevel', value.privacyLevel);
+    formData.append('Text', value.text);
+
+    this.postService.post(formData).subscribe(data => {
       this.creatForm.get('text')?.setValue('');
     })
       .add(() => {
         this.posting = false;
       });
+  }
+
+  onFileChanged(event: any) {
+    const files = event.target.files;
+    if (files.length === 0)
+      return;
+
+    // const mimeType = files[0].type;
+    // if (mimeType.match(/image\/*/) == null) {
+    //   this.message = "Only images are supported.";
+    //   return;
+    // }
+
+    const reader = new FileReader();
+    this.files = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.uploadImageUrl = reader.result;
+    }
   }
 
 }

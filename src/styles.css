@@ -11,7 +11,6 @@ html {
     display: flex;
     flex-direction: column;
     border-radius: .4rem;
-    max-width: 564px;
     background-color:rgb(66 66 66);
     color:rgb(238, 238, 238);
     margin-bottom: 1rem;
@@ -63,7 +62,7 @@ html {
 /* lg */
 @media (min-width: 768px) { 
     .post-list {
-       width: 564px;
+       width: 680px;
   }
 }
 
@@ -116,5 +115,6 @@ html {
     cursor: pointer;
 }
 
-
-
+/* .post-img {
+    max-height: 20rem;
+} */

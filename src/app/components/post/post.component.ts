@@ -3,6 +3,7 @@ import { CreateCommentResponse } from 'src/app/models/comments/create-comment-re
 import { Comment } from 'src/app/models/comments/comment.model';
 import { CommentService } from 'src/app/services/social/comment.service';
 import { Post } from 'src/app/models/posts/post.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-post',
@@ -13,6 +14,7 @@ export class PostComponent implements OnInit {
   comments: Comment[] = [];
   isShowAddComment = false;
   @Input() post!: Post;
+  imageUrl = environment.sumaSocialUrl;
 
   constructor(
     private commentService: CommentService

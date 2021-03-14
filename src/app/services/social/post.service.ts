@@ -14,11 +14,11 @@ export class PostService {
     private http: HttpClient
   ) { }
 
-  get(): Observable<Post[]> {
+  getMany(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.sumaSocialUrl}/posts`);
   }
 
-  post(model: CreatePostRequest): Observable<object> {
+  post(model: any): Observable<object> {
     return this.http.post(`${environment.sumaSocialUrl}/posts`, model);
   }
 }
