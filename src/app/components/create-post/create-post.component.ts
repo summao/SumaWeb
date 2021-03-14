@@ -59,4 +59,9 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
+  onCloseImageClick() {
+    this.uploadImageUrl = null;
+    this.files = null;
+  }
+
 }

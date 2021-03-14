@@ -12,7 +12,10 @@
     </div>
     <textarea class="form-control text-input" id="createPost" placeholder="want to share something?"
         formControlName="text"></textarea>
-    <img *ngIf="uploadImageUrl" [src]="uploadImageUrl" class="post-img mb-3" alt="...">
+    <div class="preview-image-panel">
+        <i *ngIf="uploadImageUrl" class="bi bi-x-square preview-image-close" (click)="onCloseImageClick()"></i>
+        <img *ngIf="uploadImageUrl" [src]="uploadImageUrl" class="preview-image mb-3">
+    </div>
     <div class="d-flex justify-content-end">
         <!-- <input class="input-file " type="file" (change)="onFileChanged($event)">
         <i class="bi bi-image fs-2">Smaller heading</i> -->

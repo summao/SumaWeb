@@ -8,7 +8,7 @@
         </div>
     </div>
     <p class="post-content">{{ post.text }}</p>
-    <img [src]="imageUrl + '/images/' + post.imageName" class="post-img" *ngIf="post.imageName !== null">
+    <img [src]="imageUrl + '/images/' + post.imageName" *ngIf="post.imageName !== null">
     <div class="row gx-0 action-panel mt-4 mx-2">
         <div class="col text-center pointer">Like</div>
         <div class="col text-center pointer" (click)="onClickComment(post.id)">Comment</div>

@@ -19,3 +19,18 @@
     width: 1.5rem;
     overflow: hidden;
 }
+
+.preview-image-panel {
+    position: relative;
+}
+
+.preview-image-close {
+    font-size: 1.6rem;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.preview-image {
+    width: 100%;
+}
