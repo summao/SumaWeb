@@ -4,7 +4,7 @@
         <div>
             <div class="small-profile-name">Maoindy</div>
             <select class="form-select form-select-sm small-profile-privacy-select" formControlName="privacyLevel">
-                <option value="friend">friend</option>
+                <option value="friends">friends</option>
                 <option value="public">public</option>
                 <option value="onlyme">only me</option>
             </select>
@@ -25,7 +25,7 @@
                 <input type="file" (change)="onFileChanged($event)">
             </label>
         </div>
-        <button type="button" class="btn btn-primary btn-sm ms-3" [disabled]="creatForm.invalid" (click)="post()">
+        <button type="button" class="btn btn-primary btn-sm ms-3" [disabled]="creatForm.invalid" (click)="onPostClicked()">
             <span *ngIf="!posting">Post</span>
             <div *ngIf="posting">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

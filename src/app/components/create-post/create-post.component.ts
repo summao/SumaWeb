@@ -9,7 +9,7 @@ import { PostService } from 'src/app/services/social/post.service';
 })
 export class CreatePostComponent implements OnInit {
   creatForm = new FormGroup({
-    privacyLevel: new FormControl('friend'),
+    privacyLevel: new FormControl('friends'),
     text: new FormControl('', Validators.required)
   });
 
@@ -24,10 +24,10 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  post(): void {
+  onPostClicked(): void {
     this.posting = true;
     const formData = new FormData();
-    formData.append('Image', this.files[0])
+    formData.append('Image', this.files === undefined ? null : this.files[0]);
     const value = this.creatForm.value;
     formData.append('PrivacyLevel', value.privacyLevel);
     formData.append('Text', value.text);
@@ -41,10 +41,11 @@ export class CreatePostComponent implements OnInit {
       });
   }
 
-  onFileChanged(event: any) {
+  onFileChanged(event: any): void {
     const files = event.target.files;
-    if (files.length === 0)
+    if (files.length === 0){
       return;
+    }
 
     // const mimeType = files[0].type;
     // if (mimeType.match(/image\/*/) == null) {
@@ -55,16 +56,16 @@ export class CreatePostComponent implements OnInit {
     const reader = new FileReader();
     this.files = files;
     reader.readAsDataURL(files[0]);
-    reader.onload = (_event) => {
+    reader.onload = (e) => {
       this.uploadImageUrl = reader.result;
     }
   }
 
-  onCloseImageClick() {
+  onCloseImageClick(): void {
     this.clearPreviewImage();
   }
 
-  clearPreviewImage() {
+  clearPreviewImage(): void {
     this.uploadImageUrl = null;
     this.files = null;
   }
