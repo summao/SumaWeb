@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Post } from 'src/app/models/posts/post.model';
 import { PostService } from 'src/app/services/social/post.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { PostService } from 'src/app/services/social/post.service';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+  @Output() postedEvent = new EventEmitter<Post>();
+
   creatForm = new FormGroup({
     privacyLevel: new FormControl('friends'),
     text: new FormControl('', Validators.required)
@@ -27,23 +30,26 @@ export class CreatePostComponent implements OnInit {
   onPostClicked(): void {
     this.posting = true;
     const formData = new FormData();
-    formData.append('Image', this.files === undefined ? null : this.files[0]);
+    formData.append('Image', this.files ? this.files[0] : null);
     const value = this.creatForm.value;
     formData.append('PrivacyLevel', value.privacyLevel);
     formData.append('Text', value.text);
 
-    this.postService.post(formData).subscribe(data => {
-      this.creatForm.get('text')?.setValue('');
-      this.clearPreviewImage();
-    })
-      .add(() => {
-        this.posting = false;
-      });
+    const observer = {
+      next: (post: Post) => {
+        this.postedEvent.emit(post);
+        this.creatForm.get('text')?.setValue('');
+        this.clearPreviewImage();
+      },
+      complete: () => this.posting = false
+    };
+
+    this.postService.post(formData).subscribe(observer);
   }
 
   onFileChanged(event: any): void {
     const files = event.target.files;
-    if (files.length === 0){
+    if (files.length === 0) {
       return;
     }
 
@@ -58,7 +64,7 @@ export class CreatePostComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = (e) => {
       this.uploadImageUrl = reader.result;
-    }
+    };
   }
 
   onCloseImageClick(): void {
