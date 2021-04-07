@@ -1,18 +1,20 @@
-<div class="post post-list">
-    <div class="post-profile">
-        <img src="assets/mao_profile.jpg" class="post-profile-img">
-        <div>
-            <div class="post-profile-name">Maoindy</div>
-            <div class="post-profile-time">{{ post.created | dateTimezone:'y-M-d, H:m' }}</div>
-            <div class="post-profile-privacy"><i class="bi" [class]="addPrivacyLevelClass(post.privacyLevel)"></i></div>
+<div class="card bg-dark text-white mt-3 post-width">
+    <div class="card-body">
+        <div class="d-flex">
+            <img src="assets/mao_profile.jpg" class="flex-shrink-0" style="height: 3.8rem;">
+            <div class="ms-3">
+                <h5 class="card-title align-top " style="line-height: 1rem;">Maoindy</h5>
+                <div class="fs-7 text-secondary">{{ post.created | dateTimezone:'y-M-d, H:mm' }}</div>
+                <i class="bi fs-7 text-secondary" [class]="addPrivacyLevelClass(post.privacyLevel)"></i>
+            </div>
         </div>
+        <p class="card-text mt-2">{{ post.text }}</p>
     </div>
-    <p class="post-content">{{ post.text }}</p>
-    <img [src]="imageUrl + '/images/' + post.imageName" *ngIf="post.imageName !== null">
-    <div class="row gx-0 action-panel mt-4 mx-2">
-        <div class="col text-center pointer">Like</div>
-        <div class="col text-center pointer" (click)="onClickComment(post.id)">Comment</div>
-        <div class="col text-center pointer">Share</div>
+    <img class="card-img-bottom" [src]="imageUrl + '/images/' + post.imageName" *ngIf="post.imageName !== null">
+    <div class="d-flex justify-content-around my-3">
+        <div>Like</div>
+        <div class="pointer" (click)="onClickComment(post.id)">Comment</div>
+        <div>Share</div>
     </div>
     <app-create-comment [postId]="post.id" (commentEvent)="addComment($event)" *ngIf="isShowAddComment">
     </app-create-comment>
