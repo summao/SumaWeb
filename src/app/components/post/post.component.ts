@@ -32,17 +32,18 @@ export class PostComponent implements OnInit {
   }
 
   getComments(postId: string): void {
+    // tslint:disable-next-line: deprecation
     this.commentService.getMany(postId).subscribe(comments => {
       this.comments = comments;
     });
   }
 
-  showAddCommentPanel() {
+  showAddCommentPanel(): void {
     this.isShowAddComment = true;
   }
 
   addPrivacyLevelClass(level: string): string {
-    if (level === 'friend') {
+    if (level === 'friends') {
       return 'bi-people';
     }
 
@@ -54,7 +55,7 @@ export class PostComponent implements OnInit {
   }
 
   // events
-  onClickComment(postId: string) {
+  onClickComment(postId: string): void {
     if (this.comments.length <= 0) {
       this.getComments(postId);
       this.showAddCommentPanel();
