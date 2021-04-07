@@ -15,6 +15,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { PostListComponent } from './components/post-list/post-list.component';
+import { MyHouseComponent } from './components/my-house/my-house.component';
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { PostListComponent } from './components/post-list/post-list.component';
     CreatePostComponent,
     CreateCommentComponent,
     CommentListComponent,
-    PostListComponent
+    PostListComponent,
+    MyHouseComponent,
+    NewsFeedComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,6 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/posts/post.model';
-import { PostService } from 'src/app/services/social/post.service';
-
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-post-list',
@@ -11,10 +9,12 @@ import { PostService } from 'src/app/services/social/post.service';
   animations: [
     trigger('myInsertRemoveTrigger', [
       transition(':enter', [
-        style({ opacity: 0,
+        style({
+          opacity: 0,
           transform: 'translateX(100%)'
         }),
-        animate('.3s ease-out', style({ opacity: 1,
+        animate('.3s ease-out', style({
+          opacity: 1,
           transform: 'translateX(0%)'
         })),
       ]),
@@ -25,18 +25,12 @@ import { PostService } from 'src/app/services/social/post.service';
   ]
 })
 export class PostListComponent implements OnInit {
-  posts: Post[] = [];
+  @Input() posts!: Post[];
 
-  constructor(
-    private postService: PostService,
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.postService.getMany().subscribe(result => this.posts = result);
-  }
 
-  onPosted(post: Post): void {
-    this.posts.unshift(post);
   }
 
 }
