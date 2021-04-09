@@ -18,4 +18,8 @@ export class MyHouseComponent implements OnInit {
     this.postService.getManyByPoster().subscribe(posts => this.posts = posts);
   }
 
+  onPosted(post: Post): void {
+    this.posts.unshift(post);
+  }
+
 }
