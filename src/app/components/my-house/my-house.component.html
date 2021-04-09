@@ -1,6 +1,6 @@
 <div class="d-flex flex-column flex-md-row align-items-center mt-4">
     <img class="rounded-circle" src="assets/mao_profile.jpg" style="width: 10rem;">
-    <h2 class="text-white align-self-md-end mt-2 ms-md-5">Maoindy</h2>
+    <h2 class="text-white align-self-md-end mt-2 ms-md-4">Maoindy</h2>
     <ul class="nav align-self-md-end mt-2 ms-md-5 flex-md-shrink-0">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Timeline</a>
@@ -23,4 +23,8 @@
     </ul>
 </div>
 
-<app-post-list></app-post-list>
+<div class="mt-5">
+    <app-create-post></app-create-post>
+</div>
+
+<app-post-list [posts]="posts"></app-post-list>

@@ -17,6 +17,10 @@ export class PostService {
     return this.http.get<Post[]>(`${environment.sumaSocialUrl}/posts`);
   }
 
+  getManyByPoster(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${environment.sumaSocialUrl}/posts/poster`);
+  }
+
   post(formData: FormData): Observable<Post> {
     return this.http.post<Post>(`${environment.sumaSocialUrl}/posts`, formData);
   }
