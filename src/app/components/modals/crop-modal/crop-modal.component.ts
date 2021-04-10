@@ -8,8 +8,8 @@ import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 })
 export class CropModalComponent implements OnInit {
   imageChangedEvent!: any;
-  croppedImage: any = '';
-  element!: HTMLInputElement
+  croppedImage!: any;
+  element!: HTMLInputElement;
 
   constructor() { }
 
@@ -32,6 +32,7 @@ export class CropModalComponent implements OnInit {
   onCancelClicked(): void {
     this.imageChangedEvent = null;
     this.element.value = '';
+    this.croppedImage = null;
   }
 
 }

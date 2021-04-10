@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div>
-                    <button type="button" class="btn btn-dark" (click)="onUploadPhotoClicked()">Upload photo</button>
+                    <button type="button" class="btn btn-dark" *ngIf="!croppedImage" (click)="onUploadPhotoClicked()">Upload photo</button>
                     <label class="fileContainer">
                         <input id="file" type="file" (change)="onFileChanged($event)">
                     </label>
@@ -17,7 +17,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                     (click)="onCancelClicked()">Cancel</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-primary" [disabled]="!croppedImage" >Save</button>
             </div>
         </div>
     </div>
