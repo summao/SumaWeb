@@ -1,8 +1,8 @@
 <div class="d-flex flex-column flex-md-row align-items-center mt-4">
     <div class="position-relative">
         <img class="rounded-circle" src="assets/mao_profile.jpg" style="width: 10rem;">
-        <div class="bg-dark rounded-circle position-absolute bottom-0 end-0 pointer text-center"
-            style="width: 2.5rem; height: 2.5rem;">
+        <div class="bg-dark rounded-circle position-absolute bottom-0 end-0 pointer text-center" data-bs-toggle="modal"
+            data-bs-target="#exampleModal" style="width: 2.5rem; height: 2.5rem;">
             <i class="bi bi-camera text-white" style="font-size:x-large;"></i>
         </div>
     </div>
@@ -35,6 +35,8 @@
         </ul>
     </div>
 </div>
+
+<app-crop-modal></app-crop-modal>
 
 <div class="mt-5">
     <app-create-post (postedEvent)="onPosted($event)"></app-create-post>

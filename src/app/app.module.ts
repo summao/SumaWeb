@@ -17,6 +17,8 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { PostListComponent } from './components/post-list/post-list.component';
 import { MyHouseComponent } from './components/my-house/my-house.component';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { CropModalComponent } from './components/modals/crop-modal/crop-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +32,16 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
     CommentListComponent,
     PostListComponent,
     MyHouseComponent,
-    NewsFeedComponent
+    NewsFeedComponent,
+    CropModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ImageCropperModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
