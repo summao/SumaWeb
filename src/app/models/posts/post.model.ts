@@ -4,4 +4,5 @@ export class Post {
     privacyLevel!: string;
     text!: string;
     imageName!: string;
+    profileImageName!: string;
 }

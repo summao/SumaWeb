@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/posts/post.model';
+import { PersonService } from 'src/app/services/social/person.service';
 import { PostService } from 'src/app/services/social/post.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class MyHouseComponent implements OnInit {
   posts!: Post[];
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private personService: PersonService
   ) { }
 
   ngOnInit(): void {
@@ -20,6 +22,12 @@ export class MyHouseComponent implements OnInit {
 
   onPosted(post: Post): void {
     this.posts.unshift(post);
+  }
+
+  onCropped(image: Blob) {
+    const formData = new FormData();
+    formData.append('ProfileImage', image);
+    this.personService.updateProfileImage(formData).subscribe();
   }
 
 }

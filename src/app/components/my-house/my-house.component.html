@@ -8,10 +8,10 @@
     </div>
     <div class="ms-md-4 d-flex flex-column align-items-center align-items-md-start">
         <h4 class="text-white mt-3 text-truncate name-max-width">
-            เหมาเกาหลี โพลีโพลา อะคาบาราด้า โคชิเงดะ อาปร้าโอปร้า
+            เหมาอินดี้ โพลีเอสเตอร์
         </h4>
         <h5 class="text-white text-truncate name-max-width">
-            @maoindyindaomaomedoremesolfateedoohlunla78543425
+            @maoindy
         </h5>
         <ul class="nav text-end flex-md-shrink-0">
             <li class="nav-item">
@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<app-crop-modal></app-crop-modal>
+<app-crop-modal (croppedEvent)="onCropped($event)"></app-crop-modal>
 
 <div class="mt-5">
     <app-create-post (postedEvent)="onPosted($event)"></app-create-post>

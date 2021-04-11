@@ -17,7 +17,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                     (click)="onCancelClicked()">Cancel</button>
-                <button type="button" class="btn btn-primary" [disabled]="!croppedImage" >Save</button>
+                <button type="button" class="btn btn-primary" [disabled]="!croppedImage" (click)="onSaveClicked()">Save</button>
             </div>
         </div>
     </div>
