@@ -1,7 +1,7 @@
 <div class="card bg-dark text-white mt-5 post-width">
     <div class="card-body">
         <div class="d-flex">
-            <img [src]="imageUrl + '/images/' + post.profileImageName" class="flex-shrink-0" style="height: 3.8rem;">
+            <img [src]="imageUrl + '/images/' + post.profileImageName" class="rounded-circle profile-image">
             <div class="ms-3">
                 <h5 class="card-title align-top " style="line-height: 1rem;">Maoindy</h5>
                 <div class="fs-7 text-secondary">{{ post.created | dateTimezone:'y-M-d, H:mm' }}</div>
