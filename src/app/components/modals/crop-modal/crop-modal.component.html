@@ -1,10 +1,9 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    (hide.bs.modal)="onCancelClicked()">
+<div #exampleModal class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <div>
-                    <button type="button" class="btn btn-dark" *ngIf="!croppedImage" (click)="onUploadPhotoClicked()">Upload photo</button>
+                    <button type="button" class="btn btn-dark" (click)="onUploadPhotoClicked()">Upload photo</button>
                     <label class="fileContainer">
                         <input id="file" type="file" (change)="onFileChanged($event)">
                     </label>
@@ -15,9 +14,8 @@
                 </image-cropper>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    (click)="onCancelClicked()">Cancel</button>
-                <button type="button" class="btn btn-primary" [disabled]="!croppedImage" (click)="onSaveClicked()">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!croppedImage" (click)="onSaveClicked()">Save</button>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { base64ToFile, ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
+import { base64ToFile, ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-crop-modal',
@@ -31,13 +31,10 @@ export class CropModalComponent implements OnInit {
     this.element.click();
   }
 
-  onCancelClicked(): void {
-    this.clearData();
-  }
-
   onSaveClicked(): void {
     const blob = base64ToFile(this.croppedImage);
     this.croppedEvent.emit(blob);
+    this.clearData();
   }
 
   clearData(): void {
