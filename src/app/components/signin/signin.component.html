@@ -1,12 +1,16 @@
-<div [formGroup]="fg">
-    <h3>Sign in</h3>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+<div class="card bg-gray text-white mt-5 w-100" [formGroup]="fg">
+    <div class="card-body">
+        <h3>Sign in</h3>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <div class="d-grid mt-4">
+            <button type="button" class="btn btn-primary" (click)="signin()">Sign in</button>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="text" class="form-control" id="password" formControlName="password">
-    </div>
-    <button type="button" class="btn btn-primary" (click)="signin()">Sign in</button>
 </div>

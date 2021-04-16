@@ -4,7 +4,10 @@
         font-weight: bold;
     }
     .sub-logo-text {
-        font-size: 7vw; 
+        font-size: 7vw;
+    }
+    .card-width {
+        width: 100%;
     }
 }
 
@@ -15,5 +18,8 @@
     }
     .sub-logo-text {
         font-size: 2rem; 
+    }
+    .card-width {
+        width: 25rem;
     }
 }
