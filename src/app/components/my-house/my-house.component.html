@@ -1,45 +1,49 @@
-<div class="d-flex flex-column flex-md-row align-items-center mt-4">
-    <div class="position-relative">
-        <img class="rounded-circle" src="assets/mao_profile.jpg" style="width: 10rem;">
-        <div class="bg-dark rounded-circle position-absolute bottom-0 end-0 pointer text-center" data-bs-toggle="modal"
-            data-bs-target="#exampleModal" style="width: 2.5rem; height: 2.5rem;">
-            <i class="bi bi-camera text-white" style="font-size:x-large;"></i>
+<app-navbar></app-navbar>
+
+<div class="container d-flex flex-column align-items-stretch align-items-md-center">
+    <div class="d-flex flex-column flex-md-row align-items-center mt-4">
+        <div class="position-relative">
+            <img class="rounded-circle" src="assets/mao_profile.jpg" style="width: 10rem;">
+            <div class="bg-dark rounded-circle position-absolute bottom-0 end-0 pointer text-center"
+                data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 2.5rem; height: 2.5rem;">
+                <i class="bi bi-camera text-white" style="font-size:x-large;"></i>
+            </div>
+        </div>
+        <div class="ms-md-4 d-flex flex-column align-items-center align-items-md-start">
+            <h4 class="text-white mt-3 text-truncate name-max-width">
+                เหมาอินดี้ โพลีเอสเตอร์
+            </h4>
+            <h5 class="text-white text-truncate name-max-width">
+                @maoindy
+            </h5>
+            <ul class="nav text-end flex-md-shrink-0">
+                <li class="nav-item">
+                    <a class="nav-link active submenu-padding" aria-current="page" href="#">Timeline</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-light submenu-padding" href="#">Photos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-light submenu-padding" href="#">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-light dropdown-toggle submenu-padding" data-bs-toggle="dropdown" href="#"
+                        role="button" aria-expanded="false">More</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">About me</a></li>
+                        <li><a class="dropdown-item" href="#">More 2</a></li>
+                        <li><a class="dropdown-item" href="#">More 3</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="ms-md-4 d-flex flex-column align-items-center align-items-md-start">
-        <h4 class="text-white mt-3 text-truncate name-max-width">
-            เหมาอินดี้ โพลีเอสเตอร์
-        </h4>
-        <h5 class="text-white text-truncate name-max-width">
-            @maoindy
-        </h5>
-        <ul class="nav text-end flex-md-shrink-0">
-            <li class="nav-item">
-                <a class="nav-link active submenu-padding" aria-current="page" href="#">Timeline</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light submenu-padding" href="#">Photos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light submenu-padding" href="#">Friends</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light dropdown-toggle submenu-padding" data-bs-toggle="dropdown" href="#"
-                    role="button" aria-expanded="false">More</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">About me</a></li>
-                    <li><a class="dropdown-item" href="#">More 2</a></li>
-                    <li><a class="dropdown-item" href="#">More 3</a></li>
-                </ul>
-            </li>
-        </ul>
+
+    <app-crop-modal (croppedEvent)="onCropped($event)"></app-crop-modal>
+
+    <div class="mt-5">
+        <app-create-post (postedEvent)="onPosted($event)"></app-create-post>
     </div>
+
+    <app-post-list [posts]="posts"></app-post-list>
 </div>
-
-<app-crop-modal (croppedEvent)="onCropped($event)"></app-crop-modal>
-
-<div class="mt-5">
-    <app-create-post (postedEvent)="onPosted($event)"></app-create-post>
-</div>
-
-<app-post-list [posts]="posts"></app-post-list>

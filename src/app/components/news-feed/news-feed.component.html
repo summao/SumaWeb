@@ -1,4 +1,6 @@
-<div>
+<app-navbar></app-navbar>
+
+<div class="container d-flex flex-column align-items-stretch align-items-md-center">
     <app-create-post (postedEvent)="onPosted($event)"></app-create-post>
     <app-post-list [posts]="posts"></app-post-list>
 </div>

@@ -1,0 +1,19 @@
+@media (min-width: 0px) { 
+    .logo-text {
+        font-size: 10vw; 
+        font-weight: bold;
+    }
+    .sub-logo-text {
+        font-size: 7vw; 
+    }
+}
+
+/* lg */
+@media (min-width: 768px) { 
+    .logo-text {
+        font-size: 6rem;
+    }
+    .sub-logo-text {
+        font-size: 2rem; 
+    }
+}

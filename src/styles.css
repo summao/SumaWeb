@@ -7,6 +7,10 @@ html {
     background-color: rgb(80 80 80);
 }
 
+.bg-gray {
+    background-color: rgb(66 66 66) !important;
+}
+
 /* lg */
 @media (min-width: 768px) { 
     .post-width {

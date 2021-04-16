@@ -19,6 +19,8 @@ import { MyHouseComponent } from './components/my-house/my-house.component';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { CropModalComponent } from './components/modals/crop-modal/crop-modal.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { WelcomeComponent } from './page-components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { CropModalComponent } from './components/modals/crop-modal/crop-modal.co
     PostListComponent,
     MyHouseComponent,
     NewsFeedComponent,
-    CropModalComponent
+    CropModalComponent,
+    NavbarComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
