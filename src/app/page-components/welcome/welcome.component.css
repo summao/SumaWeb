@@ -1,14 +1,16 @@
+.card-width {
+    max-width: 25rem;
+}
+
 @media (min-width: 0px) { 
     .logo-text {
         font-size: 10vw; 
         font-weight: bold;
     }
     .sub-logo-text {
-        font-size: 7vw;
+        font-size: 5vw;
     }
-    .card-width {
-        width: 100%;
-    }
+
 }
 
 /* lg */
@@ -17,9 +19,6 @@
         font-size: 6rem;
     }
     .sub-logo-text {
-        font-size: 2rem; 
-    }
-    .card-width {
-        width: 25rem;
+        font-size: 3rem; 
     }
 }
