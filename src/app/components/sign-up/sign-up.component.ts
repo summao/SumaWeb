@@ -42,7 +42,7 @@ export class SignUpComponent implements OnInit {
     this.accountService.signup(this.fg.value).subscribe(
       result => {
         console.log(result);
-        this.router.navigate(['post']);
+        this.router.navigate(['news-feed']);
       },
       error => console.log(error)
     );
