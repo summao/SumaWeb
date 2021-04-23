@@ -18,6 +18,10 @@ html {
   }
 }
 
+.show-invalid-feedback {
+    display: inline-block !important;
+}
+
 .post {
     display: flex;
     flex-direction: column;
