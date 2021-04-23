@@ -47,7 +47,7 @@
     <div class="row gx-2">
 
       <!-- Day -->
-      <div class="col-3">
+      <div class="col-12 col-sm-3">
         <label for="day" class="form-label">Day</label>
         <select id="day" class="form-select" [class.is-valid]="day?.valid" [class.is-invalid]="day?.invalid && (day?.dirty || day?.touched)" formControlName="day">
           <option value=""></option>
@@ -57,7 +57,7 @@
       </div>
 
       <!-- Month -->
-      <div class="col-5">
+      <div class="col-12 col-sm-5">
         <label for="month" class="form-label">Month</label>
         <select id="month" class="form-select" [class.is-valid]="month?.valid" [class.is-invalid]="month?.invalid && (month?.dirty || month?.touched)" formControlName="month">
           <option value=""></option>
@@ -78,7 +78,7 @@
       </div>
 
       <!-- Year -->
-      <div class="col-4">
+      <div class="col-12 col-sm-4">
         <label for="year" class="form-label">Year</label>
         <select id="year" class="form-select" [class.is-valid]="year?.valid" [class.is-invalid]="year?.invalid && (year?.dirty || year?.touched)" formControlName="year">
           <option value=""></option>
