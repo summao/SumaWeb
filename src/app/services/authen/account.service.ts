@@ -37,4 +37,17 @@ export class AccountService {
     }
 
   }
+
+  saveProfile(profile: Profile): void {
+    localStorage.setItem('profile', JSON.stringify(profile));
+  }
+
+  getProfile() {
+    const profile = localStorage.getItem('profile');
+    if (!profile) {
+      return null;
+    }
+
+    return <Profile>JSON.parse(profile);
+  }
 }

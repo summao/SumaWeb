@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { CropModalComponent } from './components/modals/crop-modal/crop-modal.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { WelcomeComponent } from './page-components/welcome/welcome.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { WelcomeComponent } from './page-components/welcome/welcome.component';
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService
+    JwtHelperService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -24,9 +24,9 @@ export class SigninComponent implements OnInit {
 
   signin(): void {
     this.accountService.signin(this.fg.value).subscribe(
-      result => {
-        localStorage.setItem('profile', JSON.stringify(result));
-        this.router.navigate(['post']);
+      profile => {
+        this.accountService.saveProfile(profile);
+        this.router.navigate(['news-feed']);
       },
       error => {
         console.log(error);
