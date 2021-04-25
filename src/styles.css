@@ -22,6 +22,12 @@ html {
     display: inline-block !important;
 }
 
+.profile-image {
+    height: 4rem;
+}
+
+/* เก่า */
+
 .post {
     display: flex;
     flex-direction: column;
