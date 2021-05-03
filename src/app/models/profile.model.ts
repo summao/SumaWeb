@@ -2,5 +2,7 @@ export class Profile {
     id!: number;
     email!: string;
     role!: number;
-    jwtToken!: string;
+    accessToken!: string;
+    refreshToken!: string;
+    profileImageName!: string;
 }

@@ -15,7 +15,7 @@ describe('UnsignedInGuardService', () => {
 
   describe('canActivate', () => {
     it('should return false and navigate to post when user is already signed in and url is /signin', () => {
-      accountServiceSpy.isUserLoggedIn.and.returnValue(true);
+      accountServiceSpy.isUserSignedIn.and.returnValue(true);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/signin' });
 
       expect(result).toBeFalsy();
@@ -23,7 +23,7 @@ describe('UnsignedInGuardService', () => {
     });
 
     it('should return false and navigate to post when user is already signed in and url is /signup', () => {
-      accountServiceSpy.isUserLoggedIn.and.returnValue(true);
+      accountServiceSpy.isUserSignedIn.and.returnValue(true);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/signup' });
 
       expect(result).toBeFalsy();
@@ -31,7 +31,7 @@ describe('UnsignedInGuardService', () => {
     });
 
     it('should return true and not navigate to any path when user is already signed in and url is not /signin or /signup', () => {
-      accountServiceSpy.isUserLoggedIn.and.returnValue(true);
+      accountServiceSpy.isUserSignedIn.and.returnValue(true);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/post' });
 
       expect(result).toBeTruthy();
@@ -39,7 +39,7 @@ describe('UnsignedInGuardService', () => {
     });
 
     it('should return true and not navigate to any path when user is not signed in and url is /signup', () => {
-      accountServiceSpy.isUserLoggedIn.and.returnValue(false);
+      accountServiceSpy.isUserSignedIn.and.returnValue(false);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/signup' });
 
       expect(result).toBeTruthy();
@@ -47,7 +47,7 @@ describe('UnsignedInGuardService', () => {
     });
 
     it('should return true and not navigate to any path when user is not signed in and url is /signin', () => {
-      accountServiceSpy.isUserLoggedIn.and.returnValue(false);
+      accountServiceSpy.isUserSignedIn.and.returnValue(false);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/signin' });
 
       expect(result).toBeTruthy();
@@ -55,7 +55,7 @@ describe('UnsignedInGuardService', () => {
     });
 
     it('should return false and not navigate to signin when user is not signed in and url is not /signin or /signup', () => {
-      accountServiceSpy.isUserLoggedIn.and.returnValue(false);
+      accountServiceSpy.isUserSignedIn.and.returnValue(false);
       const result = service.canActivate(null as any, <RouterStateSnapshot>{ url: '/post' });
 
       expect(result).toBeFalsy();

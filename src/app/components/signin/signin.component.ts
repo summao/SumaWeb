@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { AccountService } from 'src/app/services/authen/account.service';
 
 @Component({
@@ -10,8 +11,8 @@ import { AccountService } from 'src/app/services/authen/account.service';
 })
 export class SigninComponent implements OnInit {
   fg = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('user@example.com'),
+    password: new FormControl('1234'),
   });
 
   constructor(
@@ -23,15 +24,14 @@ export class SigninComponent implements OnInit {
   }
 
   signin(): void {
-    this.accountService.signin(this.fg.value).subscribe(
-      profile => {
-        this.accountService.saveProfile(profile);
+    this.accountService.signin(this.fg.value).subscribe({
+      next: () => {
         this.router.navigate(['news-feed']);
       },
-      error => {
+      error: error => {
         console.log(error);
       }
-    );
+    });
   }
 
 }
