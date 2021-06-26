@@ -6,17 +6,6 @@ import { AccountService } from './services/authen/account.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'Suma Town';
-
-  constructor(
-    private accountService: AccountService
-  ) { }
-
-  ngOnInit(): void {
-    this.accountService.restoreProfile();
-    this.accountService.profile.subscribe(profile => {
-      this.accountService.saveToLocalStorage(profile);
-    });
-  }
 }

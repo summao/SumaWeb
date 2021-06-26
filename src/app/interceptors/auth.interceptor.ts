@@ -3,28 +3,71 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AccountService } from '../services/authen/account.service';
 import { environment } from 'src/environments/environment';
+import { catchError, filter, switchMap, take } from 'rxjs/operators';
+import { RefreshTokenResponseDto } from '../dtos/accounts/refreshTokenResponseDto';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  private isRefreshing = false;
+  private refreshTokenSubject = new BehaviorSubject<string>(null as any);
+
   constructor(
     private accountService: AccountService
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const accessToken = this.accountService.getProfile()?.accessToken;
+    if (accessToken) {
+      request = this.addToken(request, accessToken);
+    }
+
+    return next.handle(request).pipe(catchError(error => {
+      if (error instanceof HttpErrorResponse && error.status === 401) {
+        return this.handle401Error(request, next);
+      } else {
+        throw error;
+      }
+    }));
+  }
+
+  private addToken(request: HttpRequest<any>, token: string) {
     const isApiUrl = request.url.startsWith(environment.sumaSocialUrl);
-    if (isApiUrl && this.accountService.isUserSignedIn()) {
+    if (isApiUrl) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.accountService.getFromLocalStorage()?.accessToken}`
+          Authorization: `Bearer ${token}`
         }
       });
     }
 
-    return next.handle(request);
+    return request;
+  }
+
+  private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
+    if (!this.isRefreshing) {
+      this.isRefreshing = true;
+      this.refreshTokenSubject.next(null as any);
+
+      return this.accountService.refreshToken().pipe(
+        switchMap((res: RefreshTokenResponseDto) => {
+          this.isRefreshing = false;
+          this.refreshTokenSubject.next(res.accessToken);
+          return next.handle(this.addToken(request, res.accessToken));
+        }));
+
+    } else {
+      return this.refreshTokenSubject.pipe(
+        filter(token => token != null),
+        take(1),
+        switchMap(jwt => {
+          return next.handle(this.addToken(request, jwt));
+        }));
+    }
   }
 }

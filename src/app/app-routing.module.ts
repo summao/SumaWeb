@@ -9,7 +9,7 @@ import { UnsignedInGuardService } from './services/authen/unsigned-in-guard.serv
 
 const routes: Routes = [
   {
-    path: 'news-feed', component: NewsFeedComponent // , canActivate: [UnsignedInGuardService] 
+    path: 'news-feed', component: NewsFeedComponent, canActivate: [UnsignedInGuardService] 
   },
   // { path: 'signup', component: SignUpComponent, canActivate: [UnsignedInGuardService] },
   // { path: 'signin', component: SigninComponent, canActivate: [UnsignedInGuardService] },

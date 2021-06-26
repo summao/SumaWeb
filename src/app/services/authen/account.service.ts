@@ -12,20 +12,20 @@ import { RefreshTokenResponseDto } from 'src/app/dtos/accounts/refreshTokenRespo
   providedIn: 'root'
 })
 export class AccountService {
-  private profileSubject: BehaviorSubject<Profile>;
-  public profile: Observable<Profile>;
+  // private profileSubject: BehaviorSubject<Profile>;
+  // public profile: Observable<Profile>;
 
   constructor(
     private http: HttpClient,
     public jwtHelper: JwtHelperService
-  ) { 
-    this.profileSubject = new BehaviorSubject<Profile>(null as any);
-    this.profile = this.profileSubject.asObservable();
+  ) {
+    // this.profileSubject = new BehaviorSubject<Profile>(null as any);
+    // this.profile = this.profileSubject.asObservable();
   }
 
-  public get profileValue(): Profile {
-    return this.profileSubject.value;
-  }
+  // public get profileValue(): Profile {
+  //   // return this.profileSubject.value;
+  // }
 
   signup(body: any) {
     return this.http.post(`${environment.sumaAuthenUrl}/signup`, body);
@@ -35,47 +35,49 @@ export class AccountService {
     return this.http.post<Profile>(`${environment.sumaAuthenUrl}/signin`, body)
       .pipe(
         map(profile => {
-          this.profileSubject.next(profile);
-          this.startRefreshTokenTimer();
+          this.saveToLocalStorage(profile);
+          // this.profileSubject.next(profile);
+          // this.startRefreshTokenTimer();
           return profile;
         })
       );
   }
 
-  refreshToken(body: RefreshTokenRequestDto): Observable<RefreshTokenResponseDto> {
+  refreshToken(): Observable<RefreshTokenResponseDto> {
+    const profile = this.getProfile();
+    const body = new RefreshTokenRequestDto({
+      userId: profile?.id,
+      refreshToken: profile?.refreshToken,
+    });
     return this.http.post<RefreshTokenResponseDto>(`${environment.sumaAuthenUrl}/refreshtoken`, body)
-    .pipe(
-      map(res => {
-        const newProfile = this.profileValue;
-        newProfile.accessToken = res.accessToken;
-        newProfile.refreshToken = res.refreshToken;
-        this.profileSubject.next(newProfile);
-        this.startRefreshTokenTimer();
-        return res;
-      })
-    );
+      .pipe(
+        map(res => {
+          const newProfile = this.getProfile();
+          if (newProfile !== null) {
+            newProfile.accessToken = res.accessToken;
+            newProfile.refreshToken = res.refreshToken;
+            this.saveToLocalStorage(newProfile);
+            // this.profileSubject.next(newProfile);
+          }
+
+          return res;
+        })
+      );
   }
 
   isUserSignedIn(): boolean {
-    const profile = localStorage.getItem('profile');
-    if (profile === null) {
-      return false;
+    if (this.getProfile() !== null) {
+      return true;
     }
 
-    const profileObj = <Profile>JSON.parse(profile);
-    if (profileObj && profileObj.role === 1) {
-      return !this.jwtHelper.isTokenExpired(profileObj.accessToken);
-    } else {
-      return false;
-    }
-
+    return false;
   }
 
   saveToLocalStorage(profile: Profile): void {
     localStorage.setItem('profile', JSON.stringify(profile));
   }
 
-  getFromLocalStorage(): Profile | null {
+  getProfile(): Profile | null {
     const profile = localStorage.getItem('profile');
     if (!profile) {
       return null;
@@ -84,32 +86,63 @@ export class AccountService {
     return <Profile>JSON.parse(profile);
   }
 
-  restoreProfile(): void {
-    const profile = this.getFromLocalStorage();
-    if (profile != null) {
-      this.profileSubject.next(profile);
-    }
-  }
+  // isTokenOneMinuteBeforeExpired(accessToken :string): boolean {
+  //   const jwtToken = JSON.parse(atob(accessToken.split('.')[1]));
+  //   const expires = new Date(jwtToken.exp * 1000);
+  //   const expireOneMinuteBefore =  expires.getTime() - (60 * 1000);
+  //   const currentDate = Date.now();
+  //   console.log(new Date(expireOneMinuteBefore));
+  //   console.log(new Date(expires));
+  //   console.log(new Date(currentDate));
+  //   if (expireOneMinuteBefore < currentDate) {
+  //     console.log('isTokenOneMinuteBeforeExpired: true'); 
+  //     return true;
+  //   }
+  //   console.log('isTokenOneMinuteBeforeExpired: false'); 
+  //   return false;
+  // }
+
+  // async restoreProfile(): Promise<void> {
+  //   if (this.isUserSignedIn()) {
+  //     return;
+  //   }
+  //   const profile = this.getFromLocalStorage();
+  //   if (profile != null) {
+  //     if (this.isTokenOneMinuteBeforeExpired(profile.accessToken)) {
+  //       let res: any;
+  //       try {
+  //         res = await this.refreshToken({ userId: profile.id, refreshToken: profile.refreshToken }).toPromise();
+  //       } catch (error) {
+  //         console.log(error);
+  //         return;
+  //       }
+  //     } else {
+  //       this.profileSubject.next(profile);
+  //       this.startRefreshTokenTimer();
+  //     }
+  //   }
+  // }
 
   // helper methods
 
-  private refreshTokenTimeout: any;
+  // private refreshTokenTimeout: any;
 
-  private startRefreshTokenTimer() {
-    // parse json object from base64 encoded jwt token
-    const jwtToken = JSON.parse(atob(this.profileValue.accessToken.split('.')[1]));
+  // private startRefreshTokenTimer() {
+  //   // parse json object from base64 encoded jwt token
+  //   const jwtToken = JSON.parse(atob(this.profileValue.accessToken.split('.')[1]));
 
-    // set a timeout to refresh the token a minute before it expires
-    const expires = new Date(jwtToken.exp * 1000);
-    const timeout = expires.getTime() - Date.now() - (60 * 1000);
-    this.refreshTokenTimeout = setTimeout(() => this.refreshToken({
-      userId: this.profileValue.id,
-      refreshToken: this.profileValue.refreshToken
-    })
-      .subscribe(), timeout);
-  }
+  //   // set a timeout to refresh the token a minute before it expires
+  //   const expires = new Date(jwtToken.exp * 1000);
+  //   const timeout = expires.getTime() - Date.now() - (60 * 1000);
+  //   console.log('startRefreshTokenTimer');
+  //   this.refreshTokenTimeout = setTimeout(() => this.refreshToken({
+  //     userId: this.profileValue.id,
+  //     refreshToken: this.profileValue.refreshToken
+  //   })
+  //     .subscribe(), timeout);
+  // }
 
-  private stopRefreshTokenTimer() {
-    clearTimeout(this.refreshTokenTimeout);
-  }
+  // private stopRefreshTokenTimer() {
+  //   clearTimeout(this.refreshTokenTimeout);
+  // }
 }
