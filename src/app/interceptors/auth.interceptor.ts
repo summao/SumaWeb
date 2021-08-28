@@ -11,6 +11,7 @@ import { AccountService } from '../services/authen/account.service';
 import { environment } from 'src/environments/environment';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
 import { RefreshTokenResponseDto } from '../dtos/accounts/refreshTokenResponseDto';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -18,7 +19,8 @@ export class AuthInterceptor implements HttpInterceptor {
   private refreshTokenSubject = new BehaviorSubject<string>(null as any);
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private router: Router
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -29,6 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(catchError(error => {
       if (error instanceof HttpErrorResponse && error.status === 401) {
+        console.log('error1')
         return this.handle401Error(request, next);
       } else {
         throw error;
@@ -55,6 +58,13 @@ export class AuthInterceptor implements HttpInterceptor {
       this.refreshTokenSubject.next(null as any);
 
       return this.accountService.refreshToken().pipe(
+        catchError(error => {
+          if (error instanceof HttpErrorResponse && error.status === 401) {
+            console.log('navigate');
+            this.router.navigate(['/']);
+          } 
+            throw error;
+        }),
         switchMap((res: RefreshTokenResponseDto) => {
           this.isRefreshing = false;
           this.refreshTokenSubject.next(res.accessToken);
